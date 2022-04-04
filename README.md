@@ -20,6 +20,7 @@ NOTE: this repo contains only the back-end without view templates.
 - Django
 - (Django modules)
 - Docker
+- PostgreSQL
 - ...
 
 ## Setup
