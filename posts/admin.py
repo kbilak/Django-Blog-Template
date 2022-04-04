@@ -15,3 +15,9 @@ class PostAdmin(TranslatableAdmin):
     list_editable = ['category', 'status']
     list_filter = ['category', 'author', 'status']
     search_fields = ['title']
+
+@admin.register(Comment)
+class CommentAdmin(TranslatableAdmin):
+    list_display = ['post', 'author', 'active', 'created', 'updated']
+    list_filter = ['author', 'active']
+    search_fields = ['author', 'post', 'body']

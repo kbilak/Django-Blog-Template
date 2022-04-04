@@ -51,3 +51,21 @@ class Post(TranslatableModel):
 
     def get_absolute_url(self):
         return reverse('posts:post_detail', args=[self.id])
+
+
+"""
+Comment Model
+"""
+class Comment(TranslatableModel):
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField(_('Body'), max_length=500)
+    created = models.DateTimeField(_('Created'), auto_now_add=True)
+    updated = models.DateTimeField(_('Updated'), auto_now=True)
+    active = models.BooleanField(_('Active'), default=True)
+
+    class Meta:
+        ordering = (-'created',)
+
+    def __str__(self):
+        return '%s - %s' %(self.author, self.created)
