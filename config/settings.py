@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'accounts.apps.AccountsConfig',
 
-    # thirds
+    # third part apps
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

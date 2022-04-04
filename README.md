@@ -6,7 +6,7 @@ NOTE: this repo contains only the back-end without view templates.
 
 ## Features
 
-- adding posts in admin panel - with TinyMCE text editor,
+- adding posts in admin panel - with ck text editor,
 - category and tag can be assigned to post,
 - user management - login, registration, password handling,
 - comment and rating systems - each post can be commented and rated by the user,
