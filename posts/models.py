@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 from django.urls import reverse
 from django.db import models
 
+
 """
 Publish Manager
 """
@@ -27,7 +28,7 @@ class Category(TranslatableModel):
 
     class Meta:
         verbose_name = _('category')
-        verbose_name_plura = _('categories')
+        verbose_name_plural = _('categories')
 
     def __str__(self):
         return self.safe_translation_getter('name', any_language=True)
@@ -50,8 +51,8 @@ class Post(TranslatableModel):
         slug=models.SlugField(_('Slug'), max_length=255),
         body=RichTextField(_('Body'), blank=True, null=True),
     )
-    category = models.ForeignKey(_('Category'), Category, related_name='posts', on_delete=models.CASCADE)
-    author = models.ForeignKey(_('Author'), User, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     cover_img = models.ImageField(_('Cover Image'), upload_to='cover_img/', blank=True)
     created = models.DateTimeField(_('Created'), auto_now_add=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True)

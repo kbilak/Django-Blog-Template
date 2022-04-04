@@ -10,6 +10,7 @@ psycopg2-binary = "*"
 django-ckeditor = "*"
 pillow = "*"
 django-parler = "*"
+django-rosetta = "*"
 
 [dev-packages]
 

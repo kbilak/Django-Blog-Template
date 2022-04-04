@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # third part apps
     'ckeditor',
     'parler',
+    'rosetta',
 ]
 
 MIDDLEWARE = [
