@@ -6,7 +6,7 @@ NOTE: this repo contains only the back-end without view templates.
 
 ## Features
 
-- adding posts in admin panel,
+- adding posts in admin panel - with TinyMCE text editor,
 - category and tag can be assigned to post,
 - user management - login, registration, password handling,
 - comment and rating systems - each post can be commented and rated by the user,
@@ -26,5 +26,5 @@ NOTE: this repo contains only the back-end without view templates.
 ## Setup
 
 ```
-...
+docker-compose up -d --build
 ```
