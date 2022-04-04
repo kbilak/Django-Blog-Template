@@ -8,22 +8,11 @@ from django.db import models
 
 
 """
-Publish Manager
-"""
-class PublishedManager(models.Manager):
-    def get_queryset(self):
-        return super(PublishedManager,
-                    self).get_queryset()\
-                .filter(status='published')
-   
-
-"""
 Category Model
 """
 class Category(TranslatableModel):
     translations = TranslatedFields(
         name=models.CharField(_('Name'), max_length=255),
-        slug=models.SlugField(_('Slug'), max_length=255),
     )
 
     class Meta:
@@ -34,7 +23,7 @@ class Category(TranslatableModel):
         return self.safe_translation_getter('name', any_language=True)
     
     def get_absolute_url(self):
-        return reverse('posts:posts_by_category', args=[self.id, self.slug])
+        return reverse('posts:posts_by_category', args=[self.id])
 
 
 """
@@ -48,7 +37,6 @@ class Post(TranslatableModel):
     )
     translations = TranslatedFields(
         title=models.CharField(_('Title'), max_length=255),
-        slug=models.SlugField(_('Slug'), max_length=255),
         body=RichTextField(_('Body'), blank=True, null=True),
     )
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
@@ -57,11 +45,9 @@ class Post(TranslatableModel):
     created = models.DateTimeField(_('Created'), auto_now_add=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True)
     status = models.CharField(_('Status'), max_length=20, choices=POST_STATUS_CHOICES, default='1')
-    objects = models.Manager()
-    published = PublishedManager()
 
     def __str__(self):
         return self.safe_translation_getter('title', any_language=True)
 
     def get_absolute_url(self):
-        return reverse('posts:post_detail', args=[self.id, self.slug])
+        return reverse('posts:post_detail', args=[self.id])

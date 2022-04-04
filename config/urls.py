@@ -21,8 +21,16 @@ from django.conf import settings
 from django.contrib import admin
 
 urlpatterns = i18n_patterns(
+    # Admin panel
     path(_('admin/'), admin.site.urls),
-    path(_('accounts/'), include('accounts.urls')),
+
+    # Translations
     path('rosetta/', include('rosetta.urls')),
-    path(_('/'), include('posts.urls')),
-)  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    # Apps
+    path(_('accounts/'), include('accounts.urls')),
+    path('', include('posts.urls')),
+) 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
