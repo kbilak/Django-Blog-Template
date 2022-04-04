@@ -13,7 +13,7 @@ NOTE: this repo contains only the back-end without view templates.
 - replies to comments,
 - post searching,
 - about, policy, cookies, contact pages etc.,
-- multiple languages,
+- multiple languages - django-parler,
 
 ## Technologies
 
