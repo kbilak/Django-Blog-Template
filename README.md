@@ -23,6 +23,32 @@ NOTE: this repo contains only the back-end without view templates.
 - PostgreSQL
 - ...
 
+## Config
+
+For the template to work properly, you need to make some configuration settings yourself.
+
+### Templates
+
+In main app foleder create new folder and name it `Templates`.
+
+In `Templates` folder create all folders and files from all views files from all apps folders.
+
+For example:
+
+In `posts` app folder there's `views` file. In `views` there's `index` function, which have the `views/index.html` parameter.
+
+You need to provide `Templates` folder with new path to the `views/index.html` file.
+
+### Translations
+
+In order to add / delete language from the project you need to update the `config/settings.py` file.
+
+In `Internationalization` section you can add and delete languages by example.
+
+#### Rosetta
+
+By going to the `127.0.0.1:8000/{language_code}/rosetta/` path you can translate the templates, models, urls etc.
+
 ## Setup
 
 ```
