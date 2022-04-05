@@ -1,6 +1,7 @@
 from tabnanny import verbose
 from parler.models import TranslatableModel, TranslatedFields
 from django.utils.translation import gettext as _
+from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from django.urls import reverse
@@ -45,6 +46,7 @@ class Post(TranslatableModel):
     created = models.DateTimeField(_('Created'), auto_now_add=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True)
     status = models.CharField(_('Status'), max_length=20, choices=POST_STATUS_CHOICES, default='1')
+    tags = TaggableManager(_('Tags'))
 
     def __str__(self):
         return self.safe_translation_getter('title', any_language=True)
@@ -65,7 +67,25 @@ class Comment(TranslatableModel):
     active = models.BooleanField(_('Active'), default=True)
 
     class Meta:
-        ordering = (-'created',)
+        ordering = ('-created',)
+
+    def __str__(self):
+        return '%s - %s' %(self.author, self.created)
+
+
+"""
+Comment's reply Model
+"""
+class Reply(models.Model):
+    comment = models.ForeignKey(Comment, related_name='reply', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField(_('Body'), max_length=500)
+    created = models.DateTimeField(_('Created'), auto_now_add=True)
+    updated = models.DateTimeField(_('Updated'), auto_now=True)
+    active = models.BooleanField(_('Active'), default=True)
+        
+    class Meta:
+        ordering = ('-created',)
 
     def __str__(self):
         return '%s - %s' %(self.author, self.created)

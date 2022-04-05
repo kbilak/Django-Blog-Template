@@ -11,6 +11,7 @@ django-ckeditor = "*"
 pillow = "*"
 django-parler = "*"
 django-rosetta = "*"
+django-taggit = "*"
 
 [dev-packages]
 

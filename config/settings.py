@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'parler',
     'rosetta',
+    'taggit',
 ]
 
 MIDDLEWARE = [
