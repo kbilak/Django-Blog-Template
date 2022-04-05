@@ -29,3 +29,8 @@ class ReplyAdmin(TranslatableAdmin):
     list_display = ['comment', 'author', 'active', 'created', 'updated']
     list_filter = ['author', 'active']
     search_fields = ['author', 'post', 'body']
+
+
+@admin.register(Review)
+class ReviewAdmin(TranslatableAdmin):
+    list_display = ['post', 'author', 'rate', 'active', 'created', 'updated']

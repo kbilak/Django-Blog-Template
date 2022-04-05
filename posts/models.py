@@ -1,4 +1,4 @@
-from tabnanny import verbose
+from django.core.validators import MaxValueValidator, MinValueValidator 
 from parler.models import TranslatableModel, TranslatedFields
 from django.utils.translation import gettext as _
 from taggit.managers import TaggableManager
@@ -89,3 +89,22 @@ class Reply(models.Model):
 
     def __str__(self):
         return '%s - %s' %(self.author, self.created)
+
+
+"""
+Post's review Model
+"""
+class Review(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.TextField(_('Comment'), max_length=255)
+    rate = models.IntegerField(_('Rate'), default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    created = models.DateTimeField(_('Created'), auto_now_add=True)
+    updated = models.DateTimeField(_('Updated'), auto_now=True)
+    active = models.BooleanField(_('Active'), default=True)
+
+    class Meta:
+        ordering = ('-created',)
+
+    def __str__(self):
+        return '%s - %s - %s' %(self.author, self.rate, self.created)
