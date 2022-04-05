@@ -12,6 +12,7 @@ pillow = "*"
 django-parler = "*"
 django-rosetta = "*"
 django-taggit = "*"
+django-allauth = "*"
 
 [dev-packages]
 

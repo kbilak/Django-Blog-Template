@@ -27,6 +27,9 @@ urlpatterns = i18n_patterns(
     # Translations
     path('rosetta/', include('rosetta.urls')),
 
+    # User management
+    path(_('accounts/'), include('allauth.urls')),
+
     # Apps
     path(_('accounts/'), include('accounts.urls')),
     path('', include('posts.urls')),
