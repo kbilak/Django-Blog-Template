@@ -14,6 +14,7 @@ NOTE: this repo contains only the back-end without view templates.
 - post searching,
 - about, policy, cookies, contact pages etc.,
 - multiple languages - django-parler,
+- pagination,
 
 ## Technologies
 
@@ -48,6 +49,29 @@ In `Internationalization` section you can add and delete languages by example.
 #### Rosetta
 
 By going to the `127.0.0.1:8000/{language_code}/rosetta/` path you can translate the templates, models, urls etc.
+
+### Pagination
+
+For pagination to work properly, you need to equip your templates with the right elements:
+
+```
+{% for v in venues %}
+...
+{% endfor %}
+```
+
+And below that:
+
+```
+{% if venues.has_previous %}
+    {{ venues.previous_page_number }}
+{% endif %}
+...
+
+{% if venues.has_next %}
+    {{ venues.next_page_number }}
+{% endif %}
+```
 
 ## Setup
 
