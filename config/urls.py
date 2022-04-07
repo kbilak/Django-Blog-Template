@@ -32,7 +32,8 @@ urlpatterns = i18n_patterns(
 
     # Apps
     path(_('accounts/'), include('accounts.urls')),
-    path('', include('posts.urls')),
+    path(_('blog/'), include('posts.urls')),
+    path('', include('page.urls')),
 ) 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
