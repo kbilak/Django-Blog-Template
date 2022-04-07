@@ -2,7 +2,7 @@
 
 This repo can be used as a template for blog apps in django.
 
-NOTE: this repo contains only the back-end without view templates.
+NOTE: this repo contains only the back-end with basic view templates.
 
 ## Features
 
