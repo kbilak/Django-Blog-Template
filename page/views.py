@@ -1,3 +1,17 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def terms_and_conditions(request):
+    pass
+
+
+def cookies(request):
+    pass
+
+
+def about(request):
+    pass
+
+
+def contact(request):
+    pass
