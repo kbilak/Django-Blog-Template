@@ -46,6 +46,8 @@ In order to add / delete language from the project you need to update the `confi
 
 In `Internationalization` section you can add and delete languages by example.
 
+In order to add things to translate you need to have them in `{% trans 'text' %}`.
+
 #### Rosetta
 
 By going to the `127.0.0.1:8000/{language_code}/rosetta/` path you can translate the templates, models, urls etc.
