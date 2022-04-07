@@ -1,4 +1,9 @@
 from django.shortcuts import render
+from .forms import *
+
+
+def index(request):
+    pass
 
 
 def terms_and_conditions(request):
@@ -14,4 +19,5 @@ def about(request):
 
 
 def contact(request):
+    form = ContactForm()
     pass
